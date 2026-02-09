@@ -1,0 +1,361 @@
+:root {
+  --primary: #4b0082;
+  --accent: #ff6ec7;
+  --bg-color: #f8f9fa;
+  --text-main: #1a1a1a;
+  --shadow-soft: 0 10px 30px rgba(0,0,0,0.05);
+  --shadow-strong: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.gallery-container {
+  padding: 100px 2% 50px;
+  background: var(--bg-color);
+  min-height: 100vh;
+  width: 100%;
+}
+
+.gallery-header {
+  text-align: center;
+  margin-bottom: 50px;
+  max-width: 100%;
+}
+
+.gallery-header h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+/* --- MASONRY GRID (Pinterest Style) --- */
+.masonry-grid {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.my-masonry-grid {
+  display: flex;
+  margin-left: -25px; /* Spațiul (gutter) între coloane */
+  width: auto;
+  max-width: none;
+  margin: 0 auto 0 -25px; /* Centrare și compensare margin */
+}
+
+.masonry-item {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  
+  /* REZOLVAREA PENTRU DELAY */
+  will-change: transform; /* Spune browserului să pre-calculeze zoom-ul */
+  transform: translateZ(0); /* Forțează accelerarea hardware (GPU) */
+  backface-visibility: hidden; /* Previne tremuratul imaginii */
+  
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+  pointer-events: auto;
+  margin-bottom: 25px;
+}
+
+.masonry-item:hover {
+  z-index: 99; /* Se ridică deasupra tuturor instantaneu */
+  transform: scale(1.05); /* Zoom-ul acum va fi instant */
+}
+
+.my-masonry-grid_column {
+  padding-left: 25px; /* Gutter orizontal */
+  background-clip: padding-box;
+}
+
+/* --- IMAGE WRAPPER & OVERLAY --- */
+.image-wrapper {
+  position: relative;
+  background: #eee;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Imaginea în sine nu trebuie să intercepteze mouse-ul */
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none; /* Rămâne none pentru a nu bloca scroll-ul sau zoom-ul */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  color: white;
+  z-index: 2;
+}
+
+image-overlay button {
+  pointer-events: auto;
+}
+
+.masonry-item:hover .image-overlay {
+  opacity: 1;
+}
+
+.overlay-info h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  pointer-events: auto;
+}
+
+.favorite-trigger {
+ top: 10px;
+  left: 10px; /* Îl mutăm în stânga sus */
+  
+  background: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.2s;
+  z-index: 20;
+  pointer-events: auto !important; /* Foarte important pentru a putea da click */
+}
+
+.favorite-trigger:hover { 
+  transform: scale(1.1); 
+  background: #f0f0f0;
+}
+.favorite-trigger.active { color: red; }
+
+/* --- MODERN MODAL --- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.modal-close {
+  /* Dimensiuni fixe pentru a fi un cerc perfect */
+  width: 40px;
+  height: 40px;
+  
+  /* Resetare stiluri buton */
+  background: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  
+  /* CENTRARE MAGICĂ */
+  display: flex;           /* Activează Flexbox */
+  align-items: center;     /* Centrează pe verticală */
+  justify-content: center; /* Centrează pe orizontală */
+  
+  /* Ajustări fine de font */
+  font-size: 20px;
+  line-height: 1;          /* Elimină spațiul suplimentar de sub text */
+  padding: 0;              /* Elimină orice padding care ar putea împinge X-ul */
+  
+  /* Poziționare în colț */
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  
+  /* Opțional: o umbră fină pentru vizibilitate */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease;
+  color: black;
+}
+
+.modal-close:hover {
+  transform: scale(1.1);
+  background: #f8f8f8;
+}
+
+.modern-modal {
+  background: white;
+  width: 100%;
+  max-width: 1100px;
+  height: 85vh;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  animation: modalScale 0.4s ease-out;
+}
+
+@keyframes modalScale {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-layout {
+  display: flex;
+  width: 100%;
+}
+
+.modal-image-section {
+  flex: 1.5;
+  background: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.modal-image-section img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: var(--shadow-strong);
+}
+
+.modal-details-section {
+  flex: 1;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.category-tag {
+  color: var(--accent);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.modal-details-section h1 {
+  font-size: 2.5rem;
+  margin: 10px 0 20px;
+  color: var(--primary);
+}
+
+.description {
+  color: #666;
+  line-height: 1.6;
+}
+
+.price-tag {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 30px 0;
+}
+
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.buy-button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buy-button:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+}
+
+.fav-action {
+  background: rgb(228, 178, 228);
+  border: 3px solid plum;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+  color: white;
+}
+
+.fav-action:hover { background: #f9f9f9; }
+
+/* --- TOAST NOTIFICATION --- */
+.toast-notification {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 50px;
+  box-shadow: var(--shadow-strong);
+  z-index: 10001;
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from { bottom: -50px; opacity: 0; }
+  to { bottom: 30px; opacity: 1; }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .modern-modal {
+    flex-direction: column;
+    height: 95vh;
+    overflow-y: auto;
+  }
+  .modal-layout { flex-direction: column; }
+  .modal-details-section { padding: 30px; }
+  .masonry-grid { columns: 2; }
+}
+
+/* Repoziționăm butonul de admin în interiorul overlay-ului */
+.admin-delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(211, 47, 47, 0.9);
+  color: white;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  z-index: 50; /* Peste overlay */
+  transition: all 0.2s;
+  opacity: 0; /* Invizibil până la hover */
+  pointer-events: auto !important;
+}
+
+/* Facem butonul vizibil doar când facem hover pe card */
+.masonry-item:hover .admin-delete {
+  opacity: 1;
+}
+
+.admin-delete:hover {
+  background: #b71c1c;
+  transform: scale(1.1);
+}

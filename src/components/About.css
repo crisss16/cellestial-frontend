@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;600&display=swap');
+
+.about-container {
+  padding: 120px 5% 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
+  color: #1a1a1a;
+}
+
+/* --- HERO SECTION --- */
+.about-hero-section {
+  text-align: center;
+  position: relative;
+  margin-bottom: 80px;
+}
+
+.about-subtitle {
+  color: #ff6ec7;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.about-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: #4b0082;
+  margin: 15px 0;
+}
+
+.about-lead {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --- GLASS CARD --- */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 50px;
+  border-radius: 40px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin-bottom: 80px;
+}
+
+.glass-card p {
+  margin-bottom: 20px;
+}
+
+/* --- FEATURES --- */
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin-bottom: 100px;
+}
+
+.feature-item {
+  text-align: center;
+  padding: 30px;
+  transition: 0.3s;
+}
+
+.feat-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.feature-item h3 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #4b0082;
+}
+
+.feature-item p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* --- OWNER SECTION --- */
+.owner-card {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  background: #fdf6f9;
+  padding: 60px;
+  border-radius: 50px;
+  margin-bottom: 80px;
+}
+
+.owner-image-wrapper {
+  flex-shrink: 0;
+}
+
+.owner-img-circle {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: url('/poza-ta.jpg') center center / cover;
+  border: 8px solid white;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.founder-label {
+  color: #ff6ec7;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.owner-info h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2.2rem;
+  margin: 10px 0 20px;
+}
+
+.owner-signature {
+  font-style: italic;
+  font-weight: 600;
+  color: #4b0082;
+  margin-top: 20px;
+}
+
+/* --- CTA BUTTON --- */
+.about-final-cta {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.cta-button-pro {
+  display: inline-block;
+  background: linear-gradient(45deg, #4b0082, #ff6ec7);
+  color: white;
+  padding: 18px 45px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 25px;
+  transition: 0.3s;
+  box-shadow: 0 10px 20px rgba(167, 124, 255, 0.3);
+}
+
+.cta-button-pro:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(167, 124, 255, 0.5);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .owner-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .glass-card { padding: 30px 20px; }
+}

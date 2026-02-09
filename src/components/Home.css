@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;500&display=swap');
+
+.home-hero {
+  /* Folosim imaginea ta de fundal */
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+              url('/cielo.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-content {
+  max-width: 900px;
+  padding: 0 20px;
+  z-index: 10;
+  animation: fadeInUp 1s ease-out;
+}
+
+.home-tagline {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 0.9rem;
+  color: #ff6ec7; /* Culoarea ta de accent */
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.home-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(3rem, 10vw, 6rem); /* Se adaptează singură la ecran */
+  color: white;
+  margin-bottom: 20px;
+  line-height: 1;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.home-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 300;
+}
+
+/* --- BUTOANE --- */
+.home-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.btn-primary-home {
+  background: linear-gradient(45deg, #4b0082, #ff6ec7);
+  color: white;
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(75, 0, 130, 0.3);
+}
+
+.btn-primary-home:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(75, 0, 130, 0.5);
+  filter: brightness(1.1);
+}
+
+.btn-secondary-home {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary-home:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: white;
+}
+
+/* --- SCROLL INDICATOR --- */
+/*.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}*/
+
+.mouse {
+  width: 25px;
+  height: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  position: relative;
+}
+
+.mouse::before {
+  content: "";
+  width: 4px;
+  height: 8px;
+  background: white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 8px;
+  border-radius: 2px;
+  animation: mouseScroll 2s infinite;
+}
+
+/* --- ANIMAȚII --- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mouseScroll {
+  0% { transform: translate(-50%, 0); opacity: 1; }
+  100% { transform: translate(-50%, 15px); opacity: 0; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .home-actions { flex-direction: column; width: 100%; padding: 0 20px; }
+  .btn-primary-home, .btn-secondary-home { width: 100%; }
+}

@@ -1,0 +1,150 @@
+.upload-page {
+    padding-top: 120px; /* Ca să nu intre sub navbar */
+    min-height: 100vh;
+    background: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.upload-container {
+    background: white;
+    width: 90%;
+    max-width: 900px;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+}
+
+.upload-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.upload-header h2 {
+    font-family: 'Cinzel Decorative', serif;
+    color: #4b0082;
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.upload-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+/* DROPZONE STYLING */
+.upload-dropzone {
+    border: 2px dashed #ddd;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 350px;
+    background: #fafafa;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-dropzone:hover {
+    border-color: #a77cff;
+    background: #f4efff;
+}
+
+.file-label {
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.upload-icon { font-size: 40px; }
+
+.preview-box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.preview-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+/* FORM STYLING */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #666;
+}
+
+.input-group input, .input-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background: white;
+    color: black;
+}
+
+.input-group textarea {
+    height: 120px;
+    resize: none;
+}
+
+.upload-btn {
+    width: 100%;
+    padding: 15px;
+    background: #4b0082;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1rem;
+}
+
+.upload-btn:hover {
+    background: #a77cff;
+    transform: translateY(-2px);
+}
+
+.status-msg {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.status-msg.success { color: #2e7d32; }
+.status-msg.error { color: #d32f2f; }
+
+@media (max-width: 768px) {
+    .upload-grid { grid-template-columns: 1fr; }
+}

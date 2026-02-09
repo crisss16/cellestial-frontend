@@ -1,0 +1,292 @@
+.cart-page-container {
+    padding: 120px 5% 60px;
+    max-width: 1300px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+.cart-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.cart-tag {
+    color: #ff6ec7;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.cart-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 3rem;
+    color: #4b0082;
+    margin-top: 10px;
+}
+
+/* --- GRID LAYOUT --- */
+.cart-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 40px;
+    align-items: start;
+}
+
+/* --- ITEM CARD MODERN --- */
+.cart-items-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cart-item-modern {
+    display: flex;
+    gap: 25px;
+    background: white;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    transition: 0.3s;
+    border: 1px solid #f0f0f0;
+}
+
+.cart-item-modern:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.cart-item-image {
+    width: 140px;
+    height: 140px;
+    flex-shrink: 0;
+}
+
+.cart-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+.cart-item-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.item-header h3 {
+    font-size: 1.3rem;
+    color: #222;
+    margin: 0;
+}
+
+.item-category {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 4px;
+}
+
+.delete-icon-btn {
+  background: #fdf0f0;
+  color: #ff4d66;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  
+  /* CENTRARE MAGICĂ */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  font-size: 14px;
+  padding: 0;
+  line-height: 1;
+  transition: 0.2s;
+}
+
+.delete-icon-btn:hover {
+  background: #ff4d66;
+  color: white;
+  transform: rotate(90deg); /* Un efect mic de rotație la hover arată profi */
+}
+
+/* QUANTITY & PRICE */
+.item-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    background: #f8f8f8;
+    border-radius: 12px;
+    padding: 5px;
+}
+
+.quantity-control button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px; /* Mărim puțin dimensiunea pentru vizibilitate */
+  
+  /* CENTRARE MAGICĂ */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding: 0; /* Eliminăm orice padding intern */
+  line-height: 1; /* Prevenim spațierea de tip text */
+  transition: 0.2s;
+}
+
+.quantity-control button:hover {
+  background: #4b0082;
+  color: white;
+}
+
+.quantity-control span {
+    padding: 0 15px;
+    font-weight: 600;
+}
+
+.item-subtotal {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #4b0082;
+}
+
+/* --- SUMMARY SIDEBAR --- */
+.cart-summary-card {
+    background: #fdf6f9;
+    padding: 40px;
+    border-radius: 35px;
+    position: sticky;
+    top: 120px;
+}
+
+.cart-summary-card h2 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+}
+
+.summary-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+}
+
+.free-shipping {
+    color: #27ae60;
+    font-weight: 700;
+}
+
+.summary-line.total {
+    font-size: 1.4rem;
+    color: #222;
+    font-weight: 800;
+    margin-top: 10px;
+}
+
+.checkout-btn-pro {
+    width: 100%;
+    margin-top: 30px;
+    padding: 18px;
+    border-radius: 15px;
+    border: none;
+    background: linear-gradient(45deg, #4b0082, #ff6ec7);
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(75, 0, 130, 0.2);
+}
+
+.checkout-btn-pro:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.1);
+    box-shadow: 0 15px 30px rgba(75, 0, 130, 0.4);
+}
+
+.secure-badges {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 0.75rem;
+    color: #888;
+}
+
+/* --- EMPTY STATE --- */
+.cart-empty-state {
+    text-align: center;
+    padding: 100px 0;
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.btn-return {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 30px;
+    border: 2px solid #4b0082;
+    color: #4b0082;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-return:hover {
+    background: #4b0082;
+    color: white;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1000px) {
+    .cart-grid {
+        grid-template-columns: 1fr;
+    }
+    .cart-summary-card {
+        position: static;
+    }
+}
+
+@media (max-width: 600px) {
+    .cart-item-modern {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .item-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
