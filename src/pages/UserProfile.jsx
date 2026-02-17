@@ -64,10 +64,11 @@ const UserProfile = () => {
         const formData = new FormData();
         formData.append("avatar", file);
 
-        const res = await fetch("https://cellestial-api.onrender.com", {
-            method: "POST",
-            body: formData,
-        });
+        const res = await fetch("https://cellestial-api.onrender.com/api/upload-avatar", {
+    method: "POST",
+    body: formData,
+    // FOARTE IMPORTANT: Nu adăuga headere manual aici (ca 'Content-Type')!
+});
         const data = await res.json();
 
         if (data.url) {
