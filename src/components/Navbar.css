@@ -248,9 +248,11 @@
   box-shadow: -10px 0 30px rgba(0,0,0,0.15);
   z-index: 10000;
   box-sizing: border-box;
+  justify-content:flex-start !important;
+  align-items: flex-start;
 
   /* --- ADAUGĂ ACESTE LINII --- */
-  overflow-y: auto; /* Permite scroll-ul pe verticală */
+  overflow-y: auto !importnat; /* Permite scroll-ul pe verticală */
   max-height: 100vh; /* Se asigură că meniul nu depășește ecranul */
   -webkit-overflow-scrolling: touch; /* Scroll fluid pe iPhone/Safari */
 }
@@ -310,9 +312,14 @@
 
 /* --- BURGER ICON --- */
 .burger {
-  display: none;
-  cursor: pointer;
-  z-index: 10001;
+    display: none;
+    cursor: pointer;
+    z-index: 10001;
+    /* Adăugăm astea pentru a-l izola vizual */
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8); /* Creează un mic scut alb în spatele liniuțelor */
+    backdrop-filter: blur(5px);
 }
 
 .burger div {
@@ -366,11 +373,18 @@
   }
 
   .mobile-menu a {
-    padding: 10px 0; /* Facem link-urile mai compacte */
-    font-size: 0.85rem;
+    padding: 8px 0; /* Mai compact în landscape */
+    border-bottom: 1px solid #eee;
   }
 
   .mobile-auth-container {
-    margin-top: 20px; /* Nu mai folosim 'auto' în landscape ca să nu sară prea jos */
+    margin-top: 10px;
+    padding-bottom: 30px;
   }
+
+  .burger {
+        top: 15px;
+        right: 15px;
+        scale: 0.8; /* Îl facem puțin mai mic în landscape */
+    }
 }
