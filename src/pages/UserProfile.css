@@ -182,10 +182,13 @@
 }
 
 .inputs-part input, .inputs-part textarea {
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 16px;
+  width: 100%;             /* Ocupă toată lățimea disponibilă */
+    box-sizing: border-box;  /* INCLUDE padding-ul și bordura în lățimea de 100% */
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif; /* Păstrează fontul dashboard-ului */
 }
 
 .save-btn {
@@ -356,4 +359,8 @@
     .downloads-grid {
         grid-template-columns: 1fr; /* Unul singur pe rând pe telefoane mici */
     }
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
 }
