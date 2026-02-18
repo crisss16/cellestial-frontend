@@ -261,3 +261,99 @@
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* --- RESPONSIVE DASHBOARD --- */
+
+@media (max-width: 992px) {
+    .dashboard-container {
+        flex-direction: column; /* Sidebar-ul trece sus, conținutul jos */
+    }
+
+    .dashboard-sidebar {
+        width: 100%;
+        height: auto;
+        position: relative; /* Nu mai e blocat pe lateral */
+        padding: 20px;
+        order: 1;
+    }
+
+    .sidebar-profile-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    .sidebar-profile-info img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 0;
+    }
+
+    .sidebar-nav {
+        flex-direction: row; /* Navigarea devine o listă orizontală scrollabilă */
+        overflow-x: auto;
+        padding-bottom: 10px;
+        gap: 5px;
+    }
+
+    .sidebar-nav button {
+        white-space: nowrap; /* Butoanele nu se rup pe rânduri noi */
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .dashboard-content {
+        padding: 20px;
+        order: 2;
+    }
+}
+
+/* --- REPARAȚII ELEMENTE INTERNE --- */
+
+@media (max-width: 768px) {
+    /* Hero Card (Bio) */
+    .profile-hero-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .hero-avatar-wrapper img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .hero-text {
+        margin-top: 0;
+    }
+
+    /* Formularul de Editare - devine o singură coloană */
+    .edit-form-wrapper {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    /* Grid-ul de Masterpieces */
+    .downloads-grid {
+        grid-template-columns: repeat(2, 1fr); /* Două pe rând pe mobil */
+        gap: 10px;
+    }
+
+    .welcome-header h2 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-row {
+        grid-template-columns: 1fr; /* Cardurile de stats unul sub altul */
+    }
+
+    .downloads-grid {
+        grid-template-columns: 1fr; /* Unul singur pe rând pe telefoane mici */
+    }
+}
