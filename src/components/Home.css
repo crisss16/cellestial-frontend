@@ -5,14 +5,17 @@
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
               url('/cielo.jpg') no-repeat center center fixed;
   background-size: cover;
-  height: 100dvh;
+  height: auto;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
   overflow: hidden;
-  padding: 0 20px;
+  padding: 100px 20px 60px;
+  box-sizing: border-box;
+  overflow-y: visible;
 }
 
 .home-content {
@@ -148,8 +151,26 @@
 /* Fix pentru telefoane foarte scurte */
 @media (max-height: 600px) {
   .home-hero {
-    padding-top: 60px;
+    padding-top: 120px; 
+    padding-bottom: 50px;
+    align-items: flex-start;
   }
-  .home-title { font-size: 2rem; }
-  .home-subtitle { margin-bottom: 20px; }
+  .home-title { font-size: clamp(1.8rem, 8vh, 3rem); /* Micșorăm titlul să nu ocupe tot ecranul */
+    margin-bottom: 10px; }
+  .home-subtitle { margin-bottom: 25px;
+    font-size: 0.9rem; }
+  .home-content {
+    margin-top: 0;
+  }
+  .home-actions {
+    flex-direction: row; /* În landscape e mai bine să fie butoanele unul lângă altul */
+    gap: 15px;
+  }
+  .btn-primary-home, .btn-secondary-home {
+    min-width: 140px;
+    padding: 10px 20px;
+  }
+  .mouse {
+    display: none;
+  }
 }
