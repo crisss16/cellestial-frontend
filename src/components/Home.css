@@ -63,40 +63,31 @@
   flex-wrap: wrap;
 }
 
-.btn-primary-home {
-  background: linear-gradient(45deg, #4b0082, #ff6ec7);
-  color: white;
-  padding: 16px 40px;
+.btn-primary-home, .btn-secondary-home {
+  padding: 16px 35px;
   border-radius: 50px;
   font-weight: 600;
   text-decoration: none;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 20px rgba(75, 0, 130, 0.3);
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px; /* Asigură o dimensiune minimă egală */
 }
 
-.btn-primary-home:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(75, 0, 130, 0.5);
-  filter: brightness(1.1);
+.btn-primary-home {
+  background: linear-gradient(45deg, #4b0082, #ff6ec7);
+  color: white;
+  box-shadow: 0 8px 15px rgba(75, 0, 130, 0.3);
 }
 
 .btn-secondary-home {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: white;
-  padding: 16px 40px;
-  border-radius: 50px;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 1.1rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
-}
-
-.btn-secondary-home:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* --- SCROLL INDICATOR --- */
@@ -149,7 +140,7 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .home-actions { flex-direction: column; width: 100%; padding: 0 20px; }
+  .home-actions { flex-direction: column; gap: 15px; align-items: center;}
   .btn-primary-home, .btn-secondary-home { width: 100%; max-width: 280px; padding: 14px 20px;}
   .home-hero {background-attachment: scroll;}
 }
