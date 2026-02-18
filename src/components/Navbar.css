@@ -60,13 +60,6 @@
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* .navbar-brand:hover {
-  transform: translateX(-50%) scale(1.05);
-  letter-spacing: 5px; /* Efect subtil de expansiune la hover */
-  background-position: right center; /* Mișcă gradientul */
-  filter: drop-shadow(0 0 8px rgba(255, 110, 199, 0.5));
-} */
-
 /* --- NAV ZONES --- */
 .nav-left, .nav-right {
   display: flex;
@@ -235,7 +228,7 @@
   right: -100%; /* Menținem pornirea din dreapta */
   width: 100%;  /* Ocupă tot ecranul pe telefoane mici sau 300px pe tablete */
   max-width: 320px;
-  height: 100vh;
+  height: 100dvh;
   background: white;
   display: flex;
   flex-direction: column; /* Aliniere pe verticală */
@@ -319,7 +312,8 @@
   .navbar { padding: 0 1.5rem; }
   .desktop-only { display: none; }
   .burger { display: block; }
-  .navbar-brand { font-size: 1.5rem; }
+  .navbar-brand { font-size: 1.4rem; 
+                letter-spacing: 1px;}
 }
 
 .admin-badge {
