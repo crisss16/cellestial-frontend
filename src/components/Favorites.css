@@ -203,6 +203,8 @@
   cursor: pointer;
   width: 100%;
   transition: 0.2s;
+  margin-bottom: 20px;
+  min-height: 45px;
 }
 
 .remove-fav-btn:hover {
@@ -269,13 +271,17 @@
 @media (max-width: 900px) {
   .modern-modal {
     flex-direction: column;
-    height: 90vh;
+    height: 90vh; /* Menținem înălțimea pentru a lăsa loc barelor browserului */
     width: 95vw;
     border-radius: 20px;
+    display: block; /* Forțăm comportamentul de block pentru scroll natural */
+    overflow-y: auto; 
+    -webkit-overflow-scrolling: touch; /* Scroll fluid pe iOS */
   }
 
-  .modal-layout {
-    display: block; /* Important pentru scroll pe Android */
+.modal-layout {
+    display: block;
+    width: 100%;
   }
 
   .modal-image-side {
@@ -285,7 +291,9 @@
 
   .modal-info-side {
     padding: 25px;
+    padding-bottom: 80px; /* <--- ACEASTA ESTE CHEIA: Spațiu extra sub ultimul buton */
     flex: none;
+    display: block;
   }
 
   .modal-price {
@@ -294,7 +302,12 @@
   }
 
   .modal-footer-actions {
-    padding-bottom: 20px;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px;
+    margin-top: 20px;
+    /* Ne asigurăm că butoanele sunt complet vizibile */
+    padding-bottom: 40px; 
   }
 }
 
