@@ -134,6 +134,13 @@ const Navbar = () => {
                 )}
             </div>
 
+            {menuOpen && (
+                <div 
+                    className="nav-overlay" 
+                    onClick={() => setMenuOpen(false)}
+                ></div>
+            )}
+
             {/* MOBILE SIDEBAR (LEFT) */}
             <div className={`mobile-menu ${menuOpen ? "active" : ""}`}>
                 <div className="mobile-nav-links">
