@@ -1,4 +1,34 @@
-.profile-page .profile-avatar {
+/* --- LAYOUT DE BAZĂ (ASIGURĂ-TE CĂ AI ACESTE CLASE) --- */
+.profile-container {
+  display: flex;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 100px auto 50px;
+  padding: 0 20px;
+}
+
+/* --- BARA DIN STÂNGA (MENIUL) --- */
+.profile-sidebar {
+  flex: 0 0 280px; /* Lățime fixă pe desktop */
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  height: fit-content;
+}
+
+/* --- SECȚIUNEA DIN DREAPTA (CONȚINUTUL) --- */
+.profile-main-content {
+  flex: 1; /* Ocupă tot spațiul rămas */
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  min-width: 0; /* Fix pentru a preveni overflow-ul elementelor flex */
+}
+
+/* --- AVATAR STYLE (PĂSTRAT ȘI OPTIMIZAT) --- */
+.profile-avatar {
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -26,11 +56,50 @@
   transition: opacity 0.25s;
 }
 
-.avatar-wrapper:hover .avatar-overlay {
-  opacity: 1;
+/* --- RESPONSIVE FIX (MOBIL) --- */
+@media (max-width: 850px) {
+  .profile-container {
+    flex-direction: column; /* Stivuiește meniul deasupra conținutului */
+    margin-top: 80px;
+    padding: 0 15px;
+    gap: 20px;
+  }
+
+  .profile-sidebar {
+    flex: none;
+    width: 100%; /* Ocupă toată lățimea */
+    box-sizing: border-box;
+    padding: 20px;
+  }
+
+  .profile-main-content {
+    width: 100%; /* Ocupă toată lățimea */
+    padding: 25px;
+    box-sizing: border-box;
+  }
+
+  /* Centrare automată pe mobil pentru info profil */
+  .profile-info {
+    text-align: center; /* Arată mai bine centrat pe mobil */
+  }
+
+  /* Ajustăm butoanele sau listele de editare să fie ușor de apăsat */
+  .profile-nav-item {
+    padding: 15px;
+    margin-bottom: 5px;
+    border-radius: 12px;
+    background: #f8f4ff;
+  }
 }
 
-.profile-info {
-  margin-top: 20px;
-  text-align: left;
+/* FIX PENTRU TABELE SAU FORMULARE CARE "IES" DIN ECRAN */
+@media (max-width: 480px) {
+  .profile-main-content {
+    padding: 15px;
+  }
+  
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+  }
 }
