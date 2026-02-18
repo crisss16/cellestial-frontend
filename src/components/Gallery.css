@@ -317,15 +317,70 @@ image-overlay button {
 }
 
 /* --- RESPONSIVE --- */
+@media  (hover: none) {
+  masonry-item:hover {
+    transform: none; /* Eliminăm zoom-ul care forțează dublu-click pe iOS */
+  }
+
+  .image-overlay {
+    /* Pe mobil, overlay-ul poate fi parțial vizibil mereu sau 
+       îl lăsăm transparent pentru a lăsa imaginea curată */
+    opacity: 1; 
+    background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.6) 100%);
+    pointer-events: none;
+  }
+
+  .favorite-trigger, .admin-delete {
+    opacity: 1 !important; /* Facem butoanele vizibile mereu pe mobil */
+    pointer-events: auto !important;
+  }
+}
+
 @media (max-width: 900px) {
   .modern-modal {
     flex-direction: column;
-    height: 95vh;
+    height: 90vh;
+    width: 95vw;
+    border-radius: 15px;
     overflow-y: auto;
   }
-  .modal-layout { flex-direction: column; }
-  .modal-details-section { padding: 30px; }
+  .modal-layout { flex-direction: column; display: block; }
+  .modal-details-section { padding: 20px; flex:none;}
   .masonry-grid { columns: 2; }
+  .modal-image-section {
+    padding: 20px;
+    min-height: 300px;
+  }
+  .modal-details-section h1 {
+    font-size: 1.8rem; /* Titlu mai mic pe telefon */
+  }
+  modal-actions {
+    gap: 10px;
+    padding-bottom: 20px; /* Spațiu la finalul scroll-ului */
+  }
+
+  .fav-action {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 50px;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+/* --- OPTIMIZĂRI GRID --- */
+@media (max-width: 600px) {
+  .my-masonry-grid {
+    margin-left: -10px; /* Gutter mai mic pe ecrane mici */
+  }
+  .my-masonry-grid_column {
+    padding-left: 10px;
+  }
+  .masonry-item {
+    margin-bottom: 10px;
+  }
 }
 
 /* Repoziționăm butonul de admin în interiorul overlay-ului */
