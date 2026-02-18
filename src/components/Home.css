@@ -2,53 +2,57 @@
 
 .home-hero {
   /* Folosim imaginea ta de fundal */
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
               url('/cielo.jpg') no-repeat center center fixed;
   background-size: cover;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
   overflow: hidden;
+  padding: 0 20px;
 }
 
 .home-content {
   max-width: 900px;
-  padding: 0 20px;
+  width: 100%;
   z-index: 10;
   animation: fadeInUp 1s ease-out;
+  /* Prevenim ca elementele să fie prea "lipite" de margini */
+  box-sizing: border-box;
 }
 
 .home-tagline {
   display: inline-block;
   text-transform: uppercase;
   letter-spacing: 4px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #ff6ec7; /* Culoarea ta de accent */
-  margin-bottom: 20px;
-  font-weight: 500;
+  margin-bottom: 15px;
+  font-weight: 600;
 }
 
 .home-title {
   font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(3rem, 10vw, 6rem); /* Se adaptează singură la ecran */
+  font-size: clamp(2.5rem, 12vw, 6rem); /* Se adaptează singură la ecran */
   color: white;
   margin-bottom: 20px;
-  line-height: 1;
-  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  line-height: 1.1;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6);
 }
 
 .home-subtitle {
   font-family: 'Inter', sans-serif;
-  font-size: 1.4rem;
+  font-size: clamp(1rem, 4vw, 1.4rem);
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 40px;
-  max-width: 600px;
+  max-width: 550px;
   margin-left: auto;
   margin-right: auto;
   font-weight: 300;
+  line-height: 1.5;
 }
 
 /* --- BUTOANE --- */
@@ -56,6 +60,7 @@
   display: flex;
   gap: 20px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .btn-primary-home {
@@ -143,7 +148,17 @@
 }
 
 /* Responsive */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .home-actions { flex-direction: column; width: 100%; padding: 0 20px; }
-  .btn-primary-home, .btn-secondary-home { width: 100%; }
+  .btn-primary-home, .btn-secondary-home { width: 100%; max-width: 280px; padding: 14px 20px;}
+  .home-hero {background-attachment: scroll;}
+}
+
+/* Fix pentru telefoane foarte scurte */
+@media (max-height: 600px) {
+  .home-hero {
+    padding-top: 60px;
+  }
+  .home-title { font-size: 2rem; }
+  .home-subtitle { margin-bottom: 20px; }
 }
