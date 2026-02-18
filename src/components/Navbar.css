@@ -235,26 +235,25 @@
 /* --- MOBILE MENU (DRAWER) --- */
 .mobile-menu {
   position: fixed;
-  top: 0;
-  right: -100%;
-  width: 100%;
-  max-width: 320px;
-  height: 100dvh; /* Folosește dynamic viewport height */
-  background: white;
-  display: flex;
-  flex-direction: column;
-  padding: 6rem 2rem 2rem 2rem;
-  transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: -10px 0 30px rgba(0,0,0,0.15);
-  z-index: 10000;
-  box-sizing: border-box;
-  justify-content:flex-start !important;
-  align-items: flex-start;
+    top: 0;
+    right: -100%; 
+    width: 100%;  
+    max-width: 320px;
+    height: 100dvh; /* Ocupă mereu înălțimea vizibilă a ecranului */
+    background: white;
+    z-index: 10000;
+    transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
 
-  /* --- ADAUGĂ ACESTE LINII --- */
-  overflow-y: auto !importnat; /* Permite scroll-ul pe verticală */
-  max-height: 100vh; /* Se asigură că meniul nu depășește ecranul */
-  -webkit-overflow-scrolling: touch; /* Scroll fluid pe iPhone/Safari */
+    /* REPARAȚIA PENTRU SCROLL */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Permite scroll-ul dacă lista e mai lungă decât ecranul */
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    
+    /* SPAȚIERE AERISITĂ */
+    padding: 80px 30px 40px 30px; /* Padding generos: Sus (pt burger), Stânga/Dreapta, Jos (pt siguranță) */
 }
 
 .mobile-menu.active {
@@ -267,12 +266,13 @@
   color: #333;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  padding: 15px 0;
+  padding: 20px 0;
   border-bottom: 1px solid #f5f5f5;
   width: 100%;
-  display: flex;
+  display: block;
   align-items: center;
   transition: color 0.3s;
+  flex-shrink: 0;
 }
 
 .mobile-menu a:hover {
@@ -320,6 +320,10 @@
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.8); /* Creează un mic scut alb în spatele liniuțelor */
     backdrop-filter: blur(5px);
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 10001;
 }
 
 .burger div {
@@ -369,7 +373,7 @@
 /* Adaugă asta la finalul fișierului tău CSS */
 @media (max-height: 500px) and (orientation: landscape) {
   .mobile-menu {
-    padding-top: 4rem; /* Reducem spațiul de sus în landscape */
+    padding-top: 70px; /* Reducem spațiul de sus în landscape */
   }
 
   .mobile-menu a {
@@ -378,8 +382,8 @@
   }
 
   .mobile-auth-container {
-    margin-top: 10px;
-    padding-bottom: 30px;
+    margin-top: 30px;
+    padding-bottom: 50px;
   }
 
   .burger {
