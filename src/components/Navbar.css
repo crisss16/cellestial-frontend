@@ -27,7 +27,7 @@
 
 .navbar.scrolled {
   height: 75px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.95); /* Fundal alb solid la scroll */
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -36,29 +36,35 @@
 
 /* --- LOGO (CENTRĂRI PRECISE) --- */
 .navbar-brand {
+  /* Importanță maximă: Fontul și stilul de bază */
   font-family: 'Cinzel Decorative', serif;
-  font-size: 2rem;
+  font-size: 2rem; /* Puțin mai mare pentru impact */
   font-weight: 700;
   text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 3px;
+  text-transform: uppercase; /* Forțează aspectul de logo profesional */
+  letter-spacing: 3px; /* Spațiere pentru un look aerisit, de lux */
+  
+  /* Gradientul actualizat pentru a fi mai fin (Smooth Transition) */
   background: linear-gradient(135deg, #ffb3de 0%, #ff4fbb 50%, #4b0082 100%);
-  background-size: 200% auto;
+  background-size: 200% auto; /* Necesar pentru animația de luciu */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  
+  /* Centrare absolută */
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
+  
+  /* Animație la hover și la încărcare */
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  white-space: nowrap; /* Previne ruperea logo-ului pe mobil */
 }
 
-.navbar-brand:hover {
+/* .navbar-brand:hover {
   transform: translateX(-50%) scale(1.05);
-  letter-spacing: 5px;
-  background-position: right center;
-  filter: drop-shadow(0 0 8px rgba(255, 110, 199, 0.5));
+  letter-spacing: 5px; /* Efect subtil de expansiune la hover */
+  background-position: right center; /* Mișcă gradientul */
+  filter: drop-shadow(0 0 8px rgba(255, 110, 199, 0.5));*/
 }
 
 /* --- NAV ZONES --- */
@@ -83,45 +89,165 @@
   transition: 0.3s;
 }
 
+/* Culori link-uri în funcție de stare */
 .navbar.transparent .nav-link, 
-.navbar.transparent .nav-icon { 
-  color: black; 
-  background: white; 
-  border: 1.5px solid #a77cff; 
-  border-radius: 50px; 
-  font-size: 0.8rem; 
-  padding: 8px 20px; 
-}
-
+.navbar.transparent .nav-icon { color: black; background: white; border: 1.5px solid #a77cff; border-radius: 50px; font-size: 0.8rem; padding: 8px 20px; }
 .navbar.scrolled .nav-link, 
-.navbar.scrolled .nav-icon { 
-  color: #333; 
-}
+.navbar.scrolled .nav-icon { color: #333; }
 
 .nav-link:hover { opacity: 0.6; }
+
+.mobile-auth-container {
+  margin-top: auto; /* Împinge tot acest grup jos */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding-top: 20px;
+}
+
+/* --- AUTH BUTTONS --- */
+.auth-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.mobile-menu .btn-log, 
+.mobile-menu .btn-sign {
+  display: flex;          /* Activăm flexbox pentru buton */
+  align-items: center;    /* Centrare verticală */
+  justify-content: center; /* CENTRARE ORIZONTALĂ (rezolvă problema ta) */
+  width: 100%;            /* Ocupă toată lățimea disponibilă */
+  height: 50px;           /* Înălțime confortabilă pentru deget */
+  font-size: 1rem;
+  letter-spacing: 1px;
+  border-radius: 12px;    /* Colțuri rotunjite modern */
+  text-align: center;     /* Siguranță extra pentru text */
+  box-sizing: border-box;
+  margin-top: 12px;
+}
+
+
+.mobile-menu .btn-sign  {
+  background: linear-gradient(135deg, #a77cff 0%, #7d44f1 100%);
+  border: none;
+  border-radius: 15px;
+  color: white !important;
+}
+
+.mobile-menu .btn-log {
+  background: linear-gradient(135deg, #a77cff 0%, #7d44f1 100%);
+  border: none;
+  border-radius: 15px;
+  color: white !important;
+  margin-top: 5px;
+}
+
+/* Buton Sign Up (Mereu plin) */
+.btn-sign .btn-log{
+  background: #a77cff;
+  color: white !important;
+  border: 3px solid #a77cff;
+}
+
+.btn-sign:hover {
+  background: #d7bcea;
+  border-color: 1px solid #4b0082;
+  transform: translateY(-2px);
+  border-radius: 12px;
+}
+.btn-log:hover {
+  background: #d7bcea;
+  border-color: 1px solid #4b0082;
+  transform: translateY(-2px);
+  border-radius: 12px;
+}
+/* --- PROFILE DROPDOWN (CORECȚIE FUNDAL) --- */
+.profile-menu-container {
+  position: relative;
+}
+
+.nav-avatar-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #a77cff;
+  cursor: pointer;
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: 55px;
+  right: 0;
+  background: white; /* Fundal alb solid obligatoriu */
+  min-width: 220px;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); /* Umbră mai puternică */
+  display: flex;
+  flex-direction: column;
+  z-index: 10000;
+}
+
+.dropdown-user-info {
+  padding-bottom: 10px;
+}
+
+.user-email-label {
+  font-size: 0.8rem;
+  color: #666; /* Gri închis pentru citire pe alb */
+  margin: 0;
+  font-weight: 500;
+}
+
+.dropdown-item {
+  padding: 12px;
+  text-decoration: none;
+  color: #333 !important; /* Text închis la culoare */
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.2s;
+}
+
+.dropdown-item:hover {
+  background: #f4efff;
+}
+
+.logout-item {
+  color: #d32f2f !important;
+  border: none;
+  background: #fff0f0;
+  text-align: left;
+  cursor: pointer;
+  margin-top: 12px !important;
+}
 
 /* --- MOBILE MENU (DRAWER) --- */
 .mobile-menu {
   position: fixed;
   top: 0;
-  right: -100%; /* Ascuns în dreapta */
-  width: 100%;
+  right: -100%; /* Menținem pornirea din dreapta */
+  width: 100%;  /* Ocupă tot ecranul pe telefoane mici sau 300px pe tablete */
   max-width: 320px;
   height: 100vh;
-  height: 100dvh; /* Înălțime dinamică pentru mobil */
   background: white;
   display: flex;
-  flex-direction: column;
-  padding: 6rem 2rem 2rem 2rem;
-  transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-direction: column; /* Aliniere pe verticală */
+  padding: 6rem 2rem 2rem 2rem; /* Spațiu sus pentru a nu fi sub logo/burger */
+  transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: -10px 0 30px rgba(0,0,0,0.15);
   z-index: 10000;
   box-sizing: border-box;
 }
 
-/* FIX: Schimbăm left:0 în right:0 pentru deschidere din dreapta */
 .mobile-menu.active {
-  right: 0;
+  left: 0;
 }
 
 .mobile-menu a {
@@ -138,35 +264,39 @@
   transition: color 0.3s;
 }
 
-.mobile-auth-container {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-  padding-top: 20px;
-  padding-bottom: env(safe-area-inset-bottom);
+.mobile-menu a:hover {
+  color: #a77cff;
 }
 
-.mobile-menu .btn-log, 
-.mobile-menu .btn-sign {
+.mobile-logout {
+  margin-top: auto; /* ACEASTA ESTE LINIA MAGICĂ care împinge butonul jos */
+  background: #fff0f0;
+  color: #d32f2f;
+  border: 1px solid #ffcccc;
+  padding: 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 50px;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  border-radius: 12px;
-  text-align: center;
-  box-sizing: border-box;
-  background: linear-gradient(135deg, #a77cff 0%, #7d44f1 100%);
-  border: none;
-  color: white !important;
+  gap: 10px;
+  transition: all 0.3s;
 }
 
-.mobile-menu .btn-log {
-  margin-top: 5px;
+.mobile-logout:hover {
+  background: #d32f2f;
+  color: white;
+}
+
+/* Container pentru info utilizator în mobile (opțional) */
+.mobile-user-info {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f4efff;
 }
 
 /* --- BURGER ICON --- */
@@ -174,7 +304,6 @@
   display: none;
   cursor: pointer;
   z-index: 10001;
-  padding: 5px;
 }
 
 .burger div {
@@ -185,32 +314,12 @@
   transition: 0.3s;
 }
 
-/* --- RESPONSIVE (DOAR AJUSTĂRI) --- */
+/* --- RESPONSIVE --- */
 @media (max-width: 992px) {
-  .navbar { 
-    padding: 0 1.5rem; 
-  }
-  .desktop-only { 
-    display: none; 
-  }
-  .burger { 
-    display: block; 
-  }
-  /* Micșorăm logo-ul pe mobil ca să nu lovească burgerul */
-  .navbar-brand { 
-    font-size: 1.4rem; 
-    letter-spacing: 1px;
-  }
-}
-
-/* --- ALTE STILURI (PĂSTRATE) --- */
-.nav-avatar-img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #a77cff;
-  cursor: pointer;
+  .navbar { padding: 0 1.5rem; }
+  .desktop-only { display: none; }
+  .burger { display: block; }
+  .navbar-brand { font-size: 1.5rem; }
 }
 
 .admin-badge {
@@ -221,4 +330,21 @@
   border-radius: 4px;
   font-weight: 800;
   display: inline-block;
+  margin-top: 5px;
+}
+
+.admin-item {
+  color: #4b0082 !important;
+  background: rgba(167, 124, 255, 0.1);
+  margin-bottom: 5px;
+}
+
+.admin-item:hover {
+  background: rgba(167, 124, 255, 0.2);
+}
+
+/* Schimbăm culoarea avatarului adminului ca să-l distingem rapid */
+.nav-avatar-img.admin-border {
+  border: 2px solid #ff6ec7; /* O culoare vibrantă pentru admin */
+  box-shadow: 0 0 10px rgba(255, 110, 199, 0.3);
 }
