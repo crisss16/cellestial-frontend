@@ -254,7 +254,6 @@
   max-height: 100vh; /* Se asigură că meniul nu depășește ecranul */
   -webkit-overflow-scrolling: touch; /* Scroll fluid pe iPhone/Safari */
 }
-}
 
 .mobile-menu.active {
   left: 0;
