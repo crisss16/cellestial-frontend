@@ -316,57 +316,66 @@ image-overlay button {
   to { bottom: 30px; opacity: 1; }
 }
 
-/* --- RESPONSIVE --- */
-@media  (hover: none) {
-  masonry-item:hover {
-    transform: none; /* Eliminăm zoom-ul care forțează dublu-click pe iOS */
+/* --- REPARAȚIE FINALĂ PENTRU SCROLL PE MOBIL --- */
+
+@media (hover: none) {
+  /* 1. Eliminăm complet orice efect vizual de hover la atingere */
+  .masonry-item:hover {
+    transform: none !important;
+    z-index: 1; 
   }
 
+  /* 2. Overlay-ul nu mai apare la atingere (hover), îl facem să apară DOAR 
+     dacă vrei să lași elementele de control (inima, delete) vizibile discret */
+  .masonry-item:hover .image-overlay {
+    opacity: 0; /* Nu mai întunecăm poza la scroll */
+  }
+
+  /* 3. Dacă vrei ca butonul de Favorite și cel de Delete să fie totuși accesibile pe mobil, 
+     le poziționăm clar, fără fundal negru pe toată poza, direct peste imaginea curată */
   .image-overlay {
-    /* Pe mobil, overlay-ul poate fi parțial vizibil mereu sau 
-       îl lăsăm transparent pentru a lăsa imaginea curată */
-    opacity: 1; 
-    background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.6) 100%);
+    background: transparent !important; /* Eliminăm gradientul negru la scroll */
+    opacity: 1 !important; 
     pointer-events: none;
   }
 
+  /* 4. Facem butoanele vizibile clar, dar fără să blocheze imaginea */
   .favorite-trigger, .admin-delete {
-    opacity: 1 !important; /* Facem butoanele vizibile mereu pe mobil */
+    opacity: 1 !important;
     pointer-events: auto !important;
+    /* Adăugăm o umbră mai puternică butoanelor pentru a fi vizibile pe orice fundal, 
+       acum că am scos fundalul negru al overlay-ului */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
   }
+  
+  /* Opțional: Mutăm butoanele puțin mai spre interior pe mobil ca să nu fie apăsate din greșeală la scroll-ul de pe marginea ecranului */
+  .favorite-trigger { top: 15px; left: 15px; }
+  .admin-delete { top: 15px; right: 15px; }
 }
 
+/* --- REPARAȚIE MODAL (Asigurăm vizibilitatea butoanelor de acțiune) --- */
 @media (max-width: 900px) {
-  .modern-modal {
+  .modal-details-section {
+    display: flex;
     flex-direction: column;
-    height: 90vh;
-    width: 95vw;
-    border-radius: 15px;
-    overflow-y: auto;
-  }
-  .modal-layout { flex-direction: column; display: block; }
-  .modal-details-section { padding: 20px; flex:none;}
-  .masonry-grid { columns: 2; }
-  .modal-image-section {
-    padding: 20px;
-    min-height: 300px;
-  }
-  .modal-details-section h1 {
-    font-size: 1.8rem; /* Titlu mai mic pe telefon */
-  }
-  modal-actions {
-    gap: 10px;
-    padding-bottom: 20px; /* Spațiu la finalul scroll-ului */
+    gap: 15px;
   }
 
+  .modal-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px;
+    margin-top: 20px;
+    /* Ne asigurăm că butoanele nu dispar sub marginea de jos */
+    padding-bottom: 30px; 
+  }
+
+  /* Forțăm butonul de Favorite din interiorul modalului să fie vizibil */
   .fav-action {
     display: flex !important;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-height: 50px;
-    visibility: visible !important;
-    opacity: 1 !important;
+    background: #4b0082 !important; /* Culoarea primară pentru vizibilitate */
+    color: white !important;
+    border: none !important;
   }
 }
 
