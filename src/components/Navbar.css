@@ -184,6 +184,17 @@
   z-index: 10000;
 }
 
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    background: rgba(0, 0, 0, 0.4); /* Întunecă restul ecranului */
+    z-index: 9998; /* Trebuie să fie sub meniu, dar peste restul paginii */
+    backdrop-filter: blur(3px); /* Efect modern de blur */
+}
+
 .dropdown-user-info {
   padding-bottom: 10px;
 }
