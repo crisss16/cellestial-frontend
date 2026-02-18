@@ -8,7 +8,8 @@
   left: 0;
   width: 100%;
   height: 85px;
-  padding: 0 4rem;
+  /* Reducem padding-ul pe laterale pentru a nu strânge logo-ul pe ecrane medii */
+  padding: 0 2rem; 
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -16,62 +17,49 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  /* Fix pentru iOS Safe Area */
+  padding-top: env(safe-area-inset-top);
 }
 
-/* --- STATES --- */
 .navbar.transparent {
   background: white;
   border-bottom: 1px solid #a77cff;
-  border-top: 0.5px solid #a77cff;
 }
 
 .navbar.scrolled {
-  height: 75px;
-  background: rgba(255, 255, 255, 0.95); /* Fundal alb solid la scroll */
+  height: 70px;
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(75, 0, 130, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* --- LOGO (CENTRĂRI PRECISE) --- */
+/* --- LOGO --- */
 .navbar-brand {
-  /* Importanță maximă: Fontul și stilul de bază */
   font-family: 'Cinzel Decorative', serif;
-  font-size: 2rem; /* Puțin mai mare pentru impact */
+  font-size: 1.8rem;
   font-weight: 700;
   text-decoration: none;
-  text-transform: uppercase; /* Forțează aspectul de logo profesional */
-  letter-spacing: 3px; /* Spațiere pentru un look aerisit, de lux */
+  text-transform: uppercase;
+  letter-spacing: 2px;
   
-  /* Gradientul actualizat pentru a fi mai fin (Smooth Transition) */
   background: linear-gradient(135deg, #ffb3de 0%, #ff4fbb 50%, #4b0082 100%);
-  background-size: 200% auto; /* Necesar pentru animația de luciu */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   
-  /* Centrare absolută */
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  
-  /* Animație la hover și la încărcare */
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.navbar-brand:hover {
-  transform: translateX(-50%) scale(1.05);
-  letter-spacing: 5px; /* Efect subtil de expansiune la hover */
-  background-position: right center; /* Mișcă gradientul */
-  filter: drop-shadow(0 0 8px rgba(255, 110, 199, 0.5));
+  transition: all 0.3s ease;
+  white-space: nowrap; /* Împiedică logo-ul să se rupă pe două rânduri */
 }
 
 /* --- NAV ZONES --- */
 .nav-left, .nav-right {
   display: flex;
   align-items: center;
-  gap: 1.8rem;
+  gap: 1.2rem;
   flex: 1;
 }
 
@@ -79,272 +67,111 @@
   justify-content: flex-end;
 }
 
-/* --- LINKS & ICONS --- */
+/* --- LINKS --- */
 .nav-link {
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 1.2px;
+  letter-spacing: 1px;
+  color: black;
+  padding: 8px 16px;
+  border: 1.5px solid #a77cff;
+  border-radius: 50px;
   transition: 0.3s;
 }
 
-/* Culori link-uri în funcție de stare */
-.navbar.transparent .nav-link, 
-.navbar.transparent .nav-icon { color: black; background: white; border: 1.5px solid #a77cff; border-radius: 50px; font-size: 0.8rem; padding: 8px 20px; }
-.navbar.scrolled .nav-link, 
-.navbar.scrolled .nav-icon { color: #333; }
-
-.nav-link:hover { opacity: 0.6; }
-
-.mobile-auth-container {
-  margin-top: auto; /* Împinge tot acest grup jos */
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-  padding-top: 20px;
-}
-
-/* --- AUTH BUTTONS --- */
-.auth-buttons {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.mobile-menu .btn-log, 
-.mobile-menu .btn-sign {
-  display: flex;          /* Activăm flexbox pentru buton */
-  align-items: center;    /* Centrare verticală */
-  justify-content: center; /* CENTRARE ORIZONTALĂ (rezolvă problema ta) */
-  width: 100%;            /* Ocupă toată lățimea disponibilă */
-  height: 50px;           /* Înălțime confortabilă pentru deget */
-  font-size: 1rem;
-  letter-spacing: 1px;
-  border-radius: 12px;    /* Colțuri rotunjite modern */
-  text-align: center;     /* Siguranță extra pentru text */
-  box-sizing: border-box;
-  margin-top: 12px;
-}
-
-
-.mobile-menu .btn-sign  {
-  background: linear-gradient(135deg, #a77cff 0%, #7d44f1 100%);
-  border: none;
-  border-radius: 15px;
-  color: white !important;
-}
-
-.mobile-menu .btn-log {
-  background: linear-gradient(135deg, #a77cff 0%, #7d44f1 100%);
-  border: none;
-  border-radius: 15px;
-  color: white !important;
-  margin-top: 5px;
-}
-
-/* Buton Sign Up (Mereu plin) */
-.btn-sign .btn-log{
-  background: #a77cff;
-  color: white !important;
-  border: 3px solid #a77cff;
-}
-
-.btn-sign:hover {
-  background: #d7bcea;
-  border-color: 1px solid #4b0082;
-  transform: translateY(-2px);
-  border-radius: 12px;
-}
-.btn-log:hover {
-  background: #d7bcea;
-  border-color: 1px solid #4b0082;
-  transform: translateY(-2px);
-  border-radius: 12px;
-}
-/* --- PROFILE DROPDOWN (CORECȚIE FUNDAL) --- */
-.profile-menu-container {
-  position: relative;
-}
-
-.nav-avatar-img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #a77cff;
-  cursor: pointer;
-}
-
-.nav-dropdown {
-  position: absolute;
-  top: 55px;
-  right: 0;
-  background: white; /* Fundal alb solid obligatoriu */
-  min-width: 220px;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); /* Umbră mai puternică */
-  display: flex;
-  flex-direction: column;
-  z-index: 10000;
-}
-
-.dropdown-user-info {
-  padding-bottom: 10px;
-}
-
-.user-email-label {
-  font-size: 0.8rem;
-  color: #666; /* Gri închis pentru citire pe alb */
-  margin: 0;
-  font-weight: 500;
-}
-
-.dropdown-item {
-  padding: 12px;
-  text-decoration: none;
-  color: #333 !important; /* Text închis la culoare */
-  font-size: 0.9rem;
-  font-weight: 600;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: 0.2s;
-}
-
-.dropdown-item:hover {
-  background: #f4efff;
-}
-
-.logout-item {
-  color: #d32f2f !important;
-  border: none;
-  background: #fff0f0;
-  text-align: left;
-  cursor: pointer;
-  margin-top: 12px !important;
-}
-
-/* --- MOBILE MENU (DRAWER) --- */
+/* --- MOBILE MENU (FIXED FOR ANDROID/IOS) --- */
 .mobile-menu {
   position: fixed;
   top: 0;
-  right: -100%; /* Menținem pornirea din dreapta */
-  width: 100%;  /* Ocupă tot ecranul pe telefoane mici sau 300px pe tablete */
-  max-width: 320px;
+  right: -100%;
+  width: 85%; /* Nu chiar 100% ca să se vadă puțin fundalul în spate */
+  max-width: 300px;
+  /* Fix înălțime pentru browsere mobile */
   height: 100vh;
+  height: 100dvh; 
   background: white;
   display: flex;
-  flex-direction: column; /* Aliniere pe verticală */
-  padding: 6rem 2rem 2rem 2rem; /* Spațiu sus pentru a nu fi sub logo/burger */
-  transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: -10px 0 30px rgba(0,0,0,0.15);
-  z-index: 10000;
+  flex-direction: column;
+  /* Spațiu generos sus pentru a nu lovi logo-ul când e deschis */
+  padding: 100px 2rem 2rem 2rem; 
+  transition: right 0.4s ease-in-out;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+  z-index: 9998;
   box-sizing: border-box;
 }
 
 .mobile-menu.active {
-  left: 0;
+  right: 0;
 }
 
-.mobile-menu a {
-  font-size: 0.9rem;
-  text-decoration: none;
-  color: #333;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  padding: 15px 0;
-  border-bottom: 1px solid #f5f5f5;
-  width: 100%;
+/* Fix butoane Login/Sign pe Mobil */
+.mobile-auth-container {
+  margin-top: auto;
   display: flex;
-  align-items: center;
-  transition: color 0.3s;
-}
-
-.mobile-menu a:hover {
-  color: #a77cff;
-}
-
-.mobile-logout {
-  margin-top: auto; /* ACEASTA ESTE LINIA MAGICĂ care împinge butonul jos */
-  background: #fff0f0;
-  color: #d32f2f;
-  border: 1px solid #ffcccc;
-  padding: 18px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 1rem;
-  text-align: center;
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
-  cursor: pointer;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.mobile-menu .btn-log, 
+.mobile-menu .btn-sign {
+  width: 100%;
+  height: 55px; /* Mai mare pentru touch-screen */
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  transition: all 0.3s;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-.mobile-logout:hover {
-  background: #d32f2f;
-  color: white;
+.mobile-menu .btn-sign {
+  background: linear-gradient(135deg, #a77cff 0%, #7d44f1 100%);
+  color: white !important;
 }
 
-/* Container pentru info utilizator în mobile (opțional) */
-.mobile-user-info {
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid #f4efff;
+.mobile-menu .btn-log {
+  background: #f4efff;
+  color: #7d44f1 !important;
 }
 
-/* --- BURGER ICON --- */
+/* --- BURGER --- */
 .burger {
   display: none;
   cursor: pointer;
   z-index: 10001;
+  padding: 10px; /* Zonă de click mai mare */
 }
 
 .burger div {
-  width: 25px;
+  width: 22px;
   height: 2px;
   background-color: #a77cff;
   margin: 5px;
   transition: 0.3s;
 }
 
-/* --- RESPONSIVE --- */
+/* --- RESPONSIVE ADJUSTMENTS --- */
 @media (max-width: 992px) {
-  .navbar { padding: 0 1.5rem; }
+  .navbar { height: 75px; padding: 0 1rem; }
   .desktop-only { display: none; }
   .burger { display: block; }
-  .navbar-brand { font-size: 1.5rem; }
+  
+  /* Micșorăm logo-ul pe mobil ca să nu se bată cu burgerul */
+  .navbar-brand { 
+    font-size: 1.3rem; 
+    letter-spacing: 1px;
+  }
 }
 
-.admin-badge {
-  background: #4b0082;
-  color: #fff;
-  font-size: 10px;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-weight: 800;
-  display: inline-block;
-  margin-top: 5px;
-}
-
-.admin-item {
-  color: #4b0082 !important;
-  background: rgba(167, 124, 255, 0.1);
-  margin-bottom: 5px;
-}
-
-.admin-item:hover {
-  background: rgba(167, 124, 255, 0.2);
-}
-
-/* Schimbăm culoarea avatarului adminului ca să-l distingem rapid */
-.nav-avatar-img.admin-border {
-  border: 2px solid #ff6ec7; /* O culoare vibrantă pentru admin */
-  box-shadow: 0 0 10px rgba(255, 110, 199, 0.3);
+/* Prevenim zoom-ul la input pe iOS */
+@media screen and (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
 }
