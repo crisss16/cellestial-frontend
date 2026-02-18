@@ -176,19 +176,22 @@
 }
 
 .inputs-part {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%; /* Asigură-te că wrapper-ul ocupă tot spațiul alocat */
+    max-width: 100%; /* Împiedică depășirea marginilor */
 }
 
 .inputs-part input, .inputs-part textarea {
-  width: 100%;             /* Ocupă toată lățimea disponibilă */
-    box-sizing: border-box;  /* INCLUDE padding-ul și bordura în lățimea de 100% */
+    width: 100% !important; /* Forțează lățimea containerului */
+    max-width: 100%;       /* Dublă siguranță */
+    box-sizing: border-box !important;
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 16px;
-    font-family: 'Inter', sans-serif; /* Păstrează fontul dashboard-ului */
+    font-family: 'Inter', sans-serif;
 }
 
 .save-btn {
@@ -335,9 +338,10 @@
 
     /* Formularul de Editare - devine o singură coloană */
     .edit-form-wrapper {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 20px;
+        display: flex; /* Schimbăm din grid în flex pentru mai mult control pe mobil */
+        flex-direction: column;
+        padding: 15px; /* Spațiu interior pentru ca elementele să nu atingă marginile */
+        width: 100%;
     }
 
     /* Grid-ul de Masterpieces */
@@ -348,6 +352,10 @@
 
     .welcome-header h2 {
         font-size: 24px;
+    }
+
+  .inputs-part {
+        width: 100%;
     }
 }
 
