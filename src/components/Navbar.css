@@ -64,8 +64,8 @@
   transform: translateX(-50%) scale(1.05);
   letter-spacing: 5px; /* Efect subtil de expansiune la hover */
   background-position: right center; /* Mișcă gradientul */
-  filter: drop-shadow(0 0 8px rgba(255, 110, 199, 0.5));*/
-}
+  filter: drop-shadow(0 0 8px rgba(255, 110, 199, 0.5));
+} */
 
 /* --- NAV ZONES --- */
 .nav-left, .nav-right {
