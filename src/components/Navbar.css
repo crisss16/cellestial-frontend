@@ -236,18 +236,24 @@
 .mobile-menu {
   position: fixed;
   top: 0;
-  right: -100%; /* Menținem pornirea din dreapta */
-  width: 100%;  /* Ocupă tot ecranul pe telefoane mici sau 300px pe tablete */
+  right: -100%;
+  width: 100%;
   max-width: 320px;
-  height: 100dvh;
+  height: 100dvh; /* Folosește dynamic viewport height */
   background: white;
   display: flex;
-  flex-direction: column; /* Aliniere pe verticală */
-  padding: 6rem 2rem 2rem 2rem; /* Spațiu sus pentru a nu fi sub logo/burger */
+  flex-direction: column;
+  padding: 6rem 2rem 2rem 2rem;
   transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: -10px 0 30px rgba(0,0,0,0.15);
   z-index: 10000;
   box-sizing: border-box;
+
+  /* --- ADAUGĂ ACESTE LINII --- */
+  overflow-y: auto; /* Permite scroll-ul pe verticală */
+  max-height: 100vh; /* Se asigură că meniul nu depășește ecranul */
+  -webkit-overflow-scrolling: touch; /* Scroll fluid pe iPhone/Safari */
+}
 }
 
 .mobile-menu.active {
@@ -352,4 +358,20 @@
 .nav-avatar-img.admin-border {
   border: 2px solid #ff6ec7; /* O culoare vibrantă pentru admin */
   box-shadow: 0 0 10px rgba(255, 110, 199, 0.3);
+}
+
+/* Adaugă asta la finalul fișierului tău CSS */
+@media (max-height: 500px) and (orientation: landscape) {
+  .mobile-menu {
+    padding-top: 4rem; /* Reducem spațiul de sus în landscape */
+  }
+
+  .mobile-menu a {
+    padding: 10px 0; /* Facem link-urile mai compacte */
+    font-size: 0.85rem;
+  }
+
+  .mobile-auth-container {
+    margin-top: 20px; /* Nu mai folosim 'auto' în landscape ca să nu sară prea jos */
+  }
 }
