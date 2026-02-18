@@ -24,25 +24,27 @@
 
 /* --- GRID MODERAN --- */
 .fav-modern-grid {
-  display: flex;
-  gap: 30px;
+  display: grid;
+  /* Pe desktop: 3 sau 4 coloane, pe tabletă 2, pe telefon 1 sau 2 */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px; 
   max-width: 1400px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .fav-art-card {
-  position: relative;
+ position: relative;
   z-index: 1;
   overflow: hidden;
+  background: white;
+  border-radius: 15px; /* Colțuri mai rotunjite ca la galerie */
+  border: 1px solid rgba(0,0,0,0.05); /* Border mai fin */
+  box-shadow: var(--shadow-soft);
   
-  /* REZOLVAREA PENTRU DELAY */
-  will-change: transform; /* Spune browserului să pre-calculeze zoom-ul */
-  transform: translateZ(0); /* Forțează accelerarea hardware (GPU) */
-  backface-visibility: hidden; /* Previne tremuratul imaginii */
-  
+  will-change: transform;
+  transform: translateZ(0);
   transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  border: 0.5px solid black;
-  border-radius: 10px;
 }
 
 
@@ -265,7 +267,82 @@
 }
 
 @media (max-width: 900px) {
-  .modern-modal { flex-direction: column; height: 90vh; overflow-y: auto; }
-  .modal-layout { flex-direction: column; }
-  .modal-image-side { padding: 20px; }
+  .modern-modal {
+    flex-direction: column;
+    height: 90vh;
+    width: 95vw;
+    border-radius: 20px;
+  }
+
+  .modal-layout {
+    display: block; /* Important pentru scroll pe Android */
+  }
+
+  .modal-image-side {
+    height: 350px;
+    padding: 20px;
+  }
+
+  .modal-info-side {
+    padding: 25px;
+    flex: none;
+  }
+
+  .modal-price {
+    font-size: 1.6rem;
+    margin: 15px 0;
+  }
+
+  .modal-footer-actions {
+    padding-bottom: 20px;
+  }
+}
+
+/* --- MODAL CLOSE BUTTON (Z-INDEX FIX) --- */
+.modal-close-btn {
+  z-index: 100; /* Ne asigurăm că X-ul e mereu deasupra */
+}
+
+@media (max-width: 600px) {
+  .fav-modern-grid {
+    /* Două coloane pe telefon pentru a arăta ca un feed modern sau 1 singură dacă vrei imagini mari */
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+    gap: 15px; /* Spațiu mai mic pe mobil, dar suficient cât să respire */
+    padding: 0 10px;
+  }
+
+  .fav-header h1 {
+    font-size: 2rem;
+  }
+
+  .fav-image-box {
+    height: 200px; /* Înălțime mai mică pe mobil pentru a nu ocupa tot ecranul */
+  }
+
+  .fav-card-details {
+    padding: 12px;
+  }
+
+  .fav-card-details h4 {
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Taie titlul dacă e prea lung să nu strice grid-ul */
+  }
+}
+
+/* --- ELIMINARE HOVER PE MOBIL (iOS FIX) --- */
+@media (hover: none) {
+  .fav-art-card:hover {
+    transform: none !important;
+  }
+
+  .fav-card-overlay {
+    /* Pe mobil nu vrem ca poza să se întunece la fiecare atingere/scroll */
+    display: none !important; 
+  }
+
+  .fav-art-card:hover .fav-image-box img {
+    transform: none !important;
+  }
 }
